@@ -6,7 +6,7 @@
 - [x] Scaffold with mock data
 - [x] Tidy up build process
 - [x] Setup database (vercel postgres)
-- [ ] Rewrite to use database
+- [x] Rewrite to use database
 - [ ] Add authentication (w/ clerk)
 - [ ] Add image upload
 - [ ] Error Handling (w/ Sentry)
