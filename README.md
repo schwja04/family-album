@@ -2,8 +2,9 @@
 
 ## TODO
 
-- [ ] Make it deploy
-- [ ] Scaffold with mock data
+- [x] Make it deploy
+- [x] Scaffold with mock data
+- [x] Tidy up build process
 - [ ] Setup database (vercel postgres)
 - [ ] Rewrite to use database
 - [ ] Add authentication (w/ clerk)
