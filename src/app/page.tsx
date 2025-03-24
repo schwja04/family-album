@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const mockUrls = [
   "https://qy6ueymmx5.ufs.sh/f/qDkQHxju96HhNzHJXNGlRuqt0PQSD9CMcUaGAXsrokYHjy2V",
   "https://qy6ueymmx5.ufs.sh/f/qDkQHxju96Hhx6ZGFqTNUtalV3Fb1ciWk9HsPT72wLE6IyfB",
