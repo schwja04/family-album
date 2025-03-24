@@ -15,10 +15,6 @@ const mockImages = [...mockUrls, ...mockUrls, ...mockUrls].map((url, index) => (
 }));
 
 export default async function HomePage() {
-  const posts = await db.query.posts.findMany({
-    limit: 10,
-  });
-
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
