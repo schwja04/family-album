@@ -7,6 +7,7 @@ import { Geist } from "next/font/google";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import type React from "react";
 
 export const metadata: Metadata = {
   title: "Family Album",
@@ -19,16 +20,19 @@ const geist = Geist({
   variable: "--font-geist-sans",
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout(props: Readonly<{
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}>) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${geist.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body className={`font-sans flex-col flex gap-4`}>
           <TopNav />
-          {children}
+          {props.children}
+          {props.modal}
+          <div id="modal-root" />
         </body>
       </html>
     </ClerkProvider>
