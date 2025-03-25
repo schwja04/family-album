@@ -4,6 +4,9 @@ import { TopNav } from "./_components/topnav";
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 export const metadata: Metadata = {
   title: "Family Album",
@@ -22,6 +25,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={`${geist.variable}`}>
+        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body className={`font-sans flex-col flex gap-4`}>
           <TopNav />
           {children}
