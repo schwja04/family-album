@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "uploadthing/tw/v4";
+@source "../../node_modules/@uploadthing/react/dist";
 
 @tailwind utilities;
 
@@ -8,11 +10,13 @@
 }
 
 body {
-  @apply bg-black text-white;
+  @apply bg-black text-white m-0 h-full;
 }
 
-@import "tailwindcss";
-
-@import "uploadthing/tw/v4";
-@source "../../node_modules/@uploadthing/react/dist";
 /** <-- depends on your project structure */
+
+
+dialog {
+  max-width: 100vw;
+  max-height: 100vh;
+}

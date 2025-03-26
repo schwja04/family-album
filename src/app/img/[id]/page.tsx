@@ -1,6 +1,6 @@
-import { getImageById } from "~/server/db/queries";
+import FullPageImageView from "~/components/full-image-page";
 
-export default async function PhotoModal({
+export default function ImagePage({
     params: { id: imageId },
 }: {
     params: { id: string };
@@ -8,12 +8,5 @@ export default async function PhotoModal({
     const idAsNumber = Number(imageId);
     if (isNaN(idAsNumber)) throw new Error("Invalid image ID");
 
-    // Fetch the image from the database using the id
-    const image = await getImageById(idAsNumber);
-
-    return (
-        <div>
-            <img src={image.url} alt={image.name} className="w-96" />
-        </div>
-    );
+    return <FullPageImageView id={idAsNumber} />;
 }
