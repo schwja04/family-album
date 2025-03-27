@@ -1,11 +1,12 @@
 import FullPageImageView from "~/components/full-image-page";
 
 export default async function ImagePage({
-    params: { id: imageId },
+    params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
-    const idAsNumber = Number(imageId);
+    const { id } = await params;
+    const idAsNumber = Number(id);
     if (isNaN(idAsNumber)) throw new Error("Invalid image ID");
 
     return <FullPageImageView id={idAsNumber} />;
