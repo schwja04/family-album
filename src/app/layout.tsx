@@ -28,9 +28,13 @@ export default function RootLayout(props: Readonly<{
     <ClerkProvider>
       <html lang="en" className={`${geist.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-        <body className={`font-sans flex-col flex gap-4`}>
-          <TopNav />
-          {props.children}
+        <body className={`font-sans`}>
+          <div className="h-screen grid grid-rows-[auto,1fr]">
+            <TopNav />
+            <main className="overflow-y-scroll">
+              {props.children}
+            </main>
+          </div>
           {props.modal}
           <div id="modal-root" />
         </body>
