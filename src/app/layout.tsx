@@ -29,7 +29,7 @@ export default function RootLayout(props: Readonly<{
       <html lang="en" className={`${geist.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body className={`font-sans`}>
-          <div className="h-screen grid grid-rows-[auto,1fr]">
+          <div className="h-screen flex flex-col">
             <TopNav />
             <main className="overflow-y-scroll">
               {props.children}
