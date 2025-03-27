@@ -1,6 +1,6 @@
 import FullPageImageView from "~/components/full-image-page";
 
-export default function ImagePage({
+export default async function ImagePage({
     params: { id: imageId },
 }: {
     params: { id: string };
