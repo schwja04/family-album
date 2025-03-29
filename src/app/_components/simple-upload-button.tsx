@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
 import { toast } from "sonner";
+import { UploadThingError } from "uploadthing/server";
 import { useUploadThing } from "~/app/utils/uploadthing";
 
 // inferred input off useUploadThing
@@ -60,13 +61,20 @@ export function SimpleUploadButton() {
             posthog.capture("upload_begin");
             toast.loading("Uploading...", {
                 id: "uploading-toast",
-                duration: 3000, // 3 seconds
+                duration: 4000,
             })
+        },
+        onUploadError(error) {
+            posthog.capture("upload_error");
+            toast.dismiss("uploading-toast");
+            toast.error("Upload failed. Please try again.", {
+                duration: 4000,
+            });
         },
         onClientUploadComplete() {
             toast.dismiss("uploading-toast");
             toast.success("Upload complete!", {
-                duration: 2000, // 2 seconds
+                duration: 4000,
             });
             router.refresh();
         },
