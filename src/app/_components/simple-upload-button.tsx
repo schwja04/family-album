@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
 import { toast } from "sonner";
-import { UploadThingError } from "uploadthing/server";
 import { useUploadThing } from "~/app/utils/uploadthing";
 
 // inferred input off useUploadThing
