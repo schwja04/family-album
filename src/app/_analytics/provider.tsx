@@ -9,13 +9,19 @@ import { PostHogProvider as PHProvider } from 'posthog-js/react'
 import { useAuth, useUser } from "@clerk/nextjs"
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
+
+    if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+        // console.error("PostHog key is not defined in environment variables.");
+        return <>{children}</>
+    }
+
     useEffect(() => {
         posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
             api_host: "/injest",
             ui_host: "https://app.posthog.com",
             person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
-            capture_pageview: false // Disable automatic pageview capture, as we capture manually
-        })
+            capture_pageview: false, // Disable automatic pageview capture, as we capture manually 
+        });
     }, [])
 
     return (
