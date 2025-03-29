@@ -9,6 +9,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import type React from "react";
 import { Toaster } from "~/components/ui/sonner";
+import { PostHogProvider } from "./_analytics/provider";
 
 export const metadata: Metadata = {
   title: "Family Album",
@@ -27,20 +28,22 @@ export default function RootLayout(props: Readonly<{
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${geist.variable}`}>
-        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-        <body className={`font-sans`}>
-          <div className="h-screen flex flex-col">
-            <TopNav />
-            <main className="overflow-y-scroll">
-              {props.children}
-            </main>
-          </div>
-          {props.modal}
-          <div id="modal-root" />
-          <Toaster />
-        </body>
-      </html>
+      <PostHogProvider>
+        <html lang="en" className={`${geist.variable}`}>
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+          <body className={`font-sans`}>
+            <div className="h-screen flex flex-col">
+              <TopNav />
+              <main className="overflow-y-scroll">
+                {props.children}
+              </main>
+            </div>
+            {props.modal}
+            <div id="modal-root" />
+            <Toaster />
+          </body>
+        </html>
+      </PostHogProvider>
     </ClerkProvider>
   );
 }
